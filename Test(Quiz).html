@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yuh</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js">
-    </script>
+    <title>Index</title>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js">
+    </script>-->    
+    
     <style>
         p, input#answer{
             display: inline;
@@ -16,10 +17,10 @@
             display: none;
         }
 
-        #message {
-            display: block;
+        
+        body{
+            background-image: url("Background.jpg");
         }
-
 
     </style>
     
@@ -28,37 +29,44 @@
 <body>
        
 
-        <div>
+        <div id="buttons">
+            
             <p id="operandA"></p><p> + </p><p id="operandB"></p> <p> = </p> <input type="text" id="answer" value="" size="1"></br></br>
-            <button id="submit" onclick="checkFunction()">Submit</button>
-        </div> </br>
+            <button id="submit" class="sbmt" onclick="checkFunction()">Submit</button>
+            </br>
 
             <p id="message"></p> </br>
-            <button id="nextEq" onclick="nextandreset()">Next</button>
-
+            
+            <input type="button" id="nextEq" value="Next" onclick="nextandreset()">
+            
+        </div>
 
    <script>
-       
+      
+    
        var operandA = Math.floor(Math.random()* 10);
        var operandB = Math.floor(Math.random()* 10);
 
        document.getElementById("operandA").innerHTML = operandA;
        document.getElementById("operandB").innerHTML = operandB;
 
-    
-      
+       
        function checkFunction(){
         var answer = operandA + operandB;
         var number = document.getElementById("answer").value;
-        
-        if (answer == number){
+         if (answer == number){
                 document.getElementById("message").innerHTML = "You got the correct answer";
                 document.getElementById("nextEq").style.display = "block";
            }
+
+        else{
+            document.getElementById("message").innerHTML = "This is the wrong answer, try again";
+        }
        }
 
+      
        function nextEquation(){
-
+        
         var operandA = Math.floor(Math.random()* 10);
         var operandB = Math.floor(Math.random()* 10);
 
@@ -72,19 +80,24 @@
        }
 
        function hideElement(){
-        document.getElementById("message").style.display = "none";
+        document.getElementById("message").innerHTML = "";
         document.getElementById("nextEq").style.display = "none";
        }
 
        function nextandreset(){
-           nextEquation();
            resetInput();
            hideElement();
-        } 
-
-     
+           nextEquation();
            
+        }
+
+        
        
+        
+
+    
+           
+    
 
 
 
